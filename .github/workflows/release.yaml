@@ -36,17 +36,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-          cache: 'yarn'
+          cache: 'pnpm'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build package
-        run: yarn build
+        run: pnpm build
       - name: Prepare repository
         run: git fetch --unshallow --tags
       - name: Create Release
-        run: yarn release
+        run: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
