@@ -1,33 +1,54 @@
 name: Release
+
 on:
   push:
-    branches:
-      - main
-      - 1.x
+    branches: [main, next]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Enabled permissions on GITHUB_TOKEN
+permissions:
+  # To be able to push to the repo
+  contents: write
+  # To update the pr description with canary info
+  pull-requests: write
+  # For pr-check to create a status
+  statuses: write
+  # Needed to create PR statuses/checks
+  checks: write
+  # To post comments on PRs
+  issues: write
+
 jobs:
   release:
-    name: release
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
         with:
-          node-version: '16'
+          token: ${{ secrets.GH_TOKEN }}
+      - uses: 8BitJonny/gh-get-current-pr@2.2.0
+        id: PR
+        with:
+          filterOutClosed: true
+          sha: ${{ github.event.pull_request.head.sha }}
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
           cache: 'yarn'
-      - name: Install Dependencies
-        run: yarn --pure-lockfile
-      - name: Build
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Build package
         run: yarn build
-      - name: Semantic Release
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
+      - name: Create Release
         run: yarn release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
-          GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
-          GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
-          GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
-          GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
-          HUSKY: 0
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          PR: ${{ steps.PR.outputs.number }}
