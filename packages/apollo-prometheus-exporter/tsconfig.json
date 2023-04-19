@@ -26,5 +26,5 @@
     "ignoreDeprecations": "5.0",
     "target": "ES2019"
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

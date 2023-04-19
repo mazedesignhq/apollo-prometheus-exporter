@@ -3,7 +3,7 @@ import { expressMiddleware } from '@apollo/server/express4';
 import express from 'express';
 import { json } from 'body-parser';
 
-import { createPrometheusExporterPlugin } from '../../lib/src';
+import { createPrometheusExporterPlugin } from '@mazeapp/apollo-prometheus-exporter';
 
 import { readSchema } from './read-schema';
 import { resolvers } from './resolvers';
