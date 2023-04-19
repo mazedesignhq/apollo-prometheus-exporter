@@ -1,6 +1,6 @@
 {
   "name": "@mazeapp/apollo-prometheus-exporter",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Plugin for Apollo Server to export metrics in Prometheus format",
   "keywords": [
     "apollo",
@@ -27,9 +27,9 @@
   "homepage": "https://github.com/mazedesignhq/apollo-prometheus-exporter#readme",
   "repository": "github:mazedesignhq/apollo-prometheus-exporter",
   "peerDependencies": {
-    "prom-client": "^12.0.0 || ^13.0.0 || ^14.0.0",
     "@apollo/server": "^4.0.0",
-    "@types/express": "^4.17.13"
+    "@types/express": "^4.17.13",
+    "prom-client": "^12.0.0 || ^13.0.0 || ^14.0.0"
   },
   "devDependencies": {
     "graphql": "^16.6.0"
