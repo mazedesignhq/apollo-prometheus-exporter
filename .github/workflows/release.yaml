@@ -32,21 +32,24 @@ jobs:
         with:
           filterOutClosed: true
           sha: ${{ github.event.pull_request.head.sha }}
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
-          cache: 'yarn'
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Build package
-        run: yarn build
+      - name: Build packages
+        run: pnpm run --filter=@mazeapp/apollo-prometheus-exporter build
       - name: Prepare repository
         run: git fetch --unshallow --tags
       - name: Create Release
-        run: yarn release
+        run: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
