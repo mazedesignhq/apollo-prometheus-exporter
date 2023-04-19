@@ -16,29 +16,31 @@
   "homepage": "https://github.com/mazedesignhq/apollo-prometheus-exporter#readme",
   "repository": "github:mazedesignhq/apollo-prometheus-exporter",
   "scripts": {
-    "postinstall": "husky install",
-    "build": "pnpm lib:build",
+    "build": "pnpm -r build",
     "release": "pnpm auto shipit -v",
-    "prettier": "prettier --write \"./**/*.{ts,json,graphql,yaml,md}\"",
-    "lint": "eslint . --ext .ts,.js,.graphql,.yaml,.yml,.json,.md",
+    "lint": "eslint . --ext .ts,.js",
     "lint:fix": "pnpm lint --fix"
   },
   "devDependencies": {
+    "@apollo/server": "^4.0.2",
     "@auto-it/all-contributors": "10.44.0",
     "@auto-it/conventional-commits": "10.44.0",
     "@auto-it/first-time-contributor": "10.44.0",
     "@auto-it/npm": "10.44.0",
     "@auto-it/slack": "10.44.0",
-    "@apollo/server": "^4.0.2",
     "@graphql-codegen/cli": "^2.13.7",
     "@graphql-codegen/typescript": "^2.7.5",
     "@graphql-codegen/typescript-resolvers": "^2.7.5",
     "@types/node": "^16.11.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
     "auto": "10.44.0",
     "copyfiles": "^2.4.1",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.7",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
-  },
-  "dependencies": {}
+  }
 }

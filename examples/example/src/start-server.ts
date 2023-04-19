@@ -8,7 +8,7 @@ import { createPrometheusExporterPlugin } from '../../lib/src';
 import { readSchema } from './read-schema';
 import { resolvers } from './resolvers';
 
-export async function startServer(port: number = 4000, hostname: string = '0.0.0.0') {
+export async function startServer(port = 4000, hostname = '0.0.0.0') {
   const app = express();
 
   const typeDefs = readSchema();

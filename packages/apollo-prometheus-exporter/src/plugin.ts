@@ -1,4 +1,4 @@
-import { ApolloServerPlugin, BaseContext } from '@apollo/server';
+import type { ApolloServerPlugin, BaseContext } from '@apollo/server';
 import { hostname } from 'os';
 import { collectDefaultMetrics, Registry } from 'prom-client';
 

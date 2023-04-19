@@ -5,8 +5,8 @@ import { Resolvers } from './generated';
 
 export function generateAsyncResponse<T = any>(
   dataFn: () => T,
-  alwaysReturnSuccess: boolean = false,
-  maxTimeout: number = 500
+  alwaysReturnSuccess = false,
+  maxTimeout = 500
 ): Promise<T> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {

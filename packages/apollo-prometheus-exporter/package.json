@@ -9,16 +9,21 @@
     "metrics",
     "tracing"
   ],
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist/**/*",
+    "./CHANGELOG.md"
+  ],
+  "exports": "./dist/index.js",
   "author": "Maze",
   "scripts": {
     "clean": "rm -rf dist",
-    "compile": "tsc -p lib/tsconfig.json",
-    "build": "pnpm clean && pnpm compile && pnpm copy-assets",
-    "copy-assets": "copyfiles -f lib/package.json README.md dist",
+    "compile": "tsc",
+    "build": "pnpm clean && pnpm compile",
     "type-check": "tsc --noEmit"
   },
   "license": "MIT",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "homepage": "https://github.com/mazedesignhq/apollo-prometheus-exporter#readme",
   "repository": "github:mazedesignhq/apollo-prometheus-exporter",
   "peerDependencies": {
