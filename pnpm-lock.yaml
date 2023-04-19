@@ -86,6 +86,9 @@ importers:
       '@graphql-codegen/typescript-resolvers':
         specifier: ^2.7.5
         version: 2.7.5(graphql@16.6.0)
+      '@types/express':
+        specifier: ^4.17.13
+        version: 4.17.14
       '@types/uuid':
         specifier: ^8.3.1
         version: 8.3.1

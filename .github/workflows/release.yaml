@@ -45,7 +45,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build packages
-        run: pnpm -r build
+        run: pnpm run --filter=@mazeapp/apollo-prometheus-exporter build
       - name: Prepare repository
         run: git fetch --unshallow --tags
       - name: Create Release
