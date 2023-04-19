@@ -1,0 +1,31 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist_example",
+    "codegen": "graphql-codegen",
+    "compile": "tsc",
+    "build": "pnpm clean && pnpm codegen && pnpm compile",
+    "serve": "ts-node src/index.ts",
+    "start": "pnpm codegen && pnpm serve",
+    "start:watch": "nodemon --watch . -e ts,graphql,json --exec 'pnpm start'",
+    "simulate-activity": "artillery run artillery.yaml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-tag": "^2.12.6",
+    "body-parser": "^1.20.1",
+    "uuid": "^8.3.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.1",
+    "graphql": "^16.6.0",
+    "nodemon": "^2.0.14",
+    "artillery": "^1.7.9"
+  }
+}

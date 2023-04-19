@@ -1,4 +1,4 @@
-import {
+import type {
   BaseContext,
   GraphQLRequestContext,
   GraphQLRequestContextDidEncounterErrors,
@@ -9,8 +9,8 @@ import {
   GraphQLRequestContextWillSendResponse,
   GraphQLFieldResolverParams
 } from '@apollo/server';
-import { Express } from 'express';
-import { DefaultMetricsCollectorConfiguration, LabelValues, register, Registry } from 'prom-client';
+import type { Express } from 'express';
+import { type DefaultMetricsCollectorConfiguration, type LabelValues, register, type Registry } from 'prom-client';
 
 import {
   FieldLabels,
@@ -22,7 +22,7 @@ import {
   SkipFnWithContext,
   SkipFnWithField
 } from './metrics';
-import { PluginOptions } from './plugin';
+import type { PluginOptions } from './plugin';
 
 export type AppContext = BaseContext;
 

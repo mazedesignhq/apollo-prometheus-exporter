@@ -1,5 +1,5 @@
-import { Express } from 'express';
-import { register as defaultRegister, Registry } from 'prom-client';
+import type { Express } from 'express';
+import { register as defaultRegister, type Registry } from 'prom-client';
 
 export interface EndpointOptions {
   app: Express;

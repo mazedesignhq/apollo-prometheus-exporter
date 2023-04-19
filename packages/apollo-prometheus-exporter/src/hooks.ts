@@ -1,6 +1,6 @@
-import { ApolloServerPlugin, GraphQLFieldResolverParams } from '@apollo/server';
-import { Path } from 'graphql/jsutils/Path';
-import { Counter, Gauge, Histogram, LabelValues } from 'prom-client';
+import type { ApolloServerPlugin, GraphQLFieldResolverParams } from '@apollo/server';
+import type { Path } from 'graphql/jsutils/Path';
+import type { Counter, Gauge, Histogram, LabelValues } from 'prom-client';
 
 import { convertMsToS, filterLabels } from './helpers';
 import { ContextTypes, FieldTypes, MetricsNames, Metrics, MetricTypes } from './metrics';

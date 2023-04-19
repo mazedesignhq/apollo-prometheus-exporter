@@ -1,4 +1,4 @@
-import {
+import type {
   BaseContext,
   GraphQLRequestContext,
   GraphQLRequestContextDidEncounterErrors,
@@ -9,9 +9,9 @@ import {
   GraphQLRequestContextWillSendResponse,
   GraphQLFieldResolverParams
 } from '@apollo/server';
-import { Counter, Gauge, Histogram, LabelValues, Metric, Registry } from 'prom-client';
+import { Counter, Gauge, Histogram, type LabelValues, type Metric, type Registry } from 'prom-client';
 
-import { AppContext, Args, Context, Source } from './context';
+import type { AppContext, Args, Context, Source } from './context';
 
 export interface ServerLabels extends LabelValues<string> {
   version: string;
