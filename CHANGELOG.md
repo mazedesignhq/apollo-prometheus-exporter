@@ -1,3 +1,16 @@
+# v0.1.0 (Wed Apr 19 2023)
+
+#### 🚀 Enhancement
+
+- `@mazeapp/apollo-prometheus-exporter`
+  - monorepo [#4](https://github.com/mazedesignhq/apollo-prometheus-exporter/pull/4) ([@jazmon](https://github.com/jazmon))
+
+#### Authors: 1
+
+- Atte Huhtakangas ([@jazmon](https://github.com/jazmon))
+
+---
+
 # v0.0.0 (Wed Apr 19 2023)
 
 :tada: This release contains work from new contributors! :tada:
